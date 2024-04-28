@@ -4,8 +4,8 @@ import { authentication, restrict } from "../auth/verifyToken.js";
 
 const router = express.Router();
 
-router.get("/:id", authentication, restrict(['patient']), getSingleUser);
-router.get("/", authentication, restrict(['admin']), getAllUsers);
+router.get("/:id", authentication, getSingleUser);
+router.get("/", authentication, getAllUsers);
 router.post("/:id",authentication, restrict(['patient']), updateUser);
 router.delete("/:id",authentication, restrict(['patient']), deleteUser);
 router.get("/profile/me", authentication, restrict(["patient"]), getUserProfile);

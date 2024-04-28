@@ -5,11 +5,11 @@ import jwt from "jsonwebtoken";
 export const authentication = async (req,res,next)=>{
     //get token
 
-    const authToken = req.headers.authorization;
-
+    const authToken  = req.cookies.jwt || req.body.token || req.header("Authorization").replace("Bearer ","");
+    console.log("Auth token : ", authToken);
     // check token exists
 
-    if(!authToken || !authToken.startsWith('Bearer')){
+    if(!authToken){
         return res.status(401).json({
             succuss:false,
             message:"Token authorization denied"
@@ -17,7 +17,7 @@ export const authentication = async (req,res,next)=>{
     }
 
     try{
-      const token = authToken.split(" ")[1];
+      const token = authToken;
 
       //verify token
       const decode = jwt.verify(token, process.env.JWT_SECRET);

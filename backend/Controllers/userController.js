@@ -81,7 +81,7 @@ export const getAllUsers =  async(req,res)=>{
     
     try
     {
-        const users = await User.find({}).select("-password");
+        const users = await User.find({});
 
         res.status(200).json({
             success:true,
