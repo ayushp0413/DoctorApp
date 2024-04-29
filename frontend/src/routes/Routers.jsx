@@ -5,6 +5,8 @@ import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 import Contact from '../pages/Contact'
 import Doctors from '../pages/Doctors/Doctors'
+import VirtualAssistent from '../Pages/VirtualAssistent'
+import Room from '../Pages/Room'
 import DoctorDetails from '../pages/Doctors/DoctorDetails'
 import Dashboard from '../Dashboard/doctor-account/Dashboard'
 import MyAccount from '../Dashboard/user-account/MyAccount'
@@ -22,6 +24,8 @@ export default function Routers() {
       <Route path='/' element={<Home/>} />
       <Route path='/home' element={<Home/>} />
       <Route path='/doctors' element={<Doctors/>} />
+      <Route path='/virassistent' element={<VirtualAssistent/>} />
+      <Route path="/room/:roomId" element={<Room />} />
       <Route path='/doctors/:id' element={<DoctorDetails/>} />
       <Route path='/login' element={<Login/>} />
       <Route path='/register' element={<Signup/>} />
