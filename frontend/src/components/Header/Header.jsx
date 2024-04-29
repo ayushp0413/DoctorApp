@@ -75,14 +75,9 @@ const Header = () => {
 
           {/* ========== NAV RIGHT ========= */}
           <div className="flex items-center gap-4">
-      {            token && user ? (
-                <div >
-                  <Link to={`${role==='doctor'?'/doctor/profile/me':'/user/profile/me'}`}>
-                    <figure className="w-[35] h-[35] rounded-full cursor-pointer">
-                      <img src={user?.photo} className="w-full rounded-full" alt="" />
-                    </figure>
-                  
-                  </Link>
+         {            token && user ? (
+                <div className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44] flex items-center justify-center rounded-[50px]">
+                  <Link to="/register">Logout</Link> 
                 </div>
               ) : (
                 <Link to="/login">

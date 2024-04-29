@@ -1,5 +1,5 @@
 import User from '../models/UserSchema.js';
-import Doctor from '../models/DoctorSchema.js';
+import Doctor from '../models/DoctorSchema.js'
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { configDotenv } from 'dotenv';
@@ -34,18 +34,18 @@ export const register = async (req, res) => {
 
         if (role === 'patient') {
 
-            const updatedUser = await User.create({name , email , password:hashPassword, photo, gender,role})
-        //     user = new User({
-        //         name,
-        //         email,
-        //         password: hashPassword,
-        //         photo,
-        //         gender,
-        //         role
-        //     })
-        //    await user.save(); 
+           // const updatedUser = await User.create({name , email , password:hashPassword, photo, gender,role})
+            user = new User({
+                name,
+                email,
+                password: hashPassword,
+                photo,
+                gender,
+                role
+            })
+       
         }
-        else if (role === 'doctor') {
+        if (role === 'doctor') {
             user = new Doctor({
                 name,
                 email,
@@ -54,7 +54,7 @@ export const register = async (req, res) => {
                 gender,
                 role
             })
-            await user.save();
+           
         }
         const responseDB = await user.save();
 
