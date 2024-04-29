@@ -33,14 +33,17 @@ export const register = async (req, res) => {
         const hashPassword = await bcrypt.hash(password, salt);
 
         if (role === 'patient') {
-            user = new User({
-                name,
-                email,
-                password: hashPassword,
-                photo,
-                gender,
-                role
-            })
+
+            const updatedUser = await User.create({name , email , password:hashPassword, photo, gender,role})
+        //     user = new User({
+        //         name,
+        //         email,
+        //         password: hashPassword,
+        //         photo,
+        //         gender,
+        //         role
+        //     })
+        //    await user.save(); 
         }
         else if (role === 'doctor') {
             user = new Doctor({
@@ -51,8 +54,8 @@ export const register = async (req, res) => {
                 gender,
                 role
             })
+            await user.save();
         }
-
         const responseDB = await user.save();
 
         res.status(200).json({success: true, data:responseDB, message: "User Successfully Created"})
